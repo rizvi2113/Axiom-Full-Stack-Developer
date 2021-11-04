@@ -61,7 +61,12 @@ h2{
 }
 .form_control.error input{
     border-color:var(--error-color);
+
      
+}
+.form_control.error small{
+    visibility: visible;
+
 }
 .form_control small{
     color:var(--error-color);
