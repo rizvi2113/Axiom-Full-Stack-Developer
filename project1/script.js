@@ -24,6 +24,12 @@ function showSuccess(input){
     formControl.className="form_control success";
 
 };
+//function to check email is valid or not
+function IsValidEmail(email){
+    //this is Js email regular expression for checking valid email
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
   
 //Event listners
 // active submit button
@@ -43,6 +49,10 @@ form.addEventListener("submit", function(e) {
     if (Email.value === ""){
         showError(Email,"Email is required");
             
+    }
+    else if (!IsValidEmail(Email.value)){
+        showError(Email,"Email is invalid")
+
     }
     else{
         showSuccess(Email);
