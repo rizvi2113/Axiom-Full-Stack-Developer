@@ -24,12 +24,7 @@ function showSuccess(input){
     formControl.className="form_control success";
 
 };
-
-
-
-
-
-
+  
 //Event listners
 // active submit button
 //create event listner
@@ -53,7 +48,7 @@ form.addEventListener("submit", function(e) {
         showSuccess(Email);
     };
     // check if password is empty
-    if (username.value === ""){
+    if (password.value === ""){
         showError(password,"Password is required");
         
     }
@@ -62,10 +57,10 @@ form.addEventListener("submit", function(e) {
     };
     // check if con_password is empty
     if (con_password.value === ""){
-        showError(con_password,"Username is required");
+        showError(con_password,"confirm password is required");
             
     }
     else{
         showSuccess(con_password);
     };
-});
+})

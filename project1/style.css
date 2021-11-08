@@ -87,3 +87,18 @@ h2{
     margin-top:20px;
     width:100%;
 }
+.home{
+    width: 100%;
+    padding:10px 10px 10px 10px;
+    background-color: lightgrey;
+    cursor: pointer;
+    border: 1px solid lightgrey;
+    
+    
+}
+a{
+    text-decoration:none;
+    color:white;
+    font-size: 16px;
+
+}
