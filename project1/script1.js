@@ -28,34 +28,50 @@ function showSuccess(input){
 function IsValidEmail(email){
     //this is Js email regular expression for checking valid email
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase()); 
+    return re.test(String(email).toLowerCase());
 }
-//funtion to check all text boxes have required inputs
-function checkRequired(inputArray){
-    //this high order array function 
-    inputArray.forEach(function(input){
-        if (input.value === ""){
-        //same output showerror (input,input.id+ "is required")
-            showError(input,`${getFieldId(input) } is required`)
-        }
-        else{
-            showSuccess(input);
-        }
-    });
-} 
-//function to get the id of the field in uppercase
-function getFieldId(input){
-    return input.id.charAt(0).toUpperCase()+ input.id.slice(1);
-
-}
-
+  
 //Event listners
 // active submit button
 //create event listner
 form.addEventListener("submit", function(e) {
     //prevent page from reloading on submit
     e.preventDefault();
+    // check if username is empty
+    if (username.value === ""){
+        showError(username,"Username is required");
+        
+    }
+    else{
+        showSuccess(username);
+    };
+    // check if Email is empty
+    if (Email.value === ""){
+        showError(Email,"Email is required");
+            
+    }
+    //check email is valid
+    else if (!IsValidEmail(Email.value)){
+        showError(Email,"Email is invalid")
 
-    checkRequired([username,Email,password,con_password]);
-
+    }
+    else{
+        showSuccess(Email);
+    };
+    // check if password is empty
+    if (password.value === ""){
+        showError(password,"Password is required");
+        
+    }
+    else{
+        showSuccess(password);
+    };
+    // check if con_password is empty
+    if (con_password.value === ""){
+        showError(con_password,"confirm password is required");
+            
+    }
+    else{
+        showSuccess(con_password);
+    };
 })
