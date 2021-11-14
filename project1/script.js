@@ -36,7 +36,7 @@ function checkRequired(inputArray){
     inputArray.forEach(function(input){
         if (input.value === ""){
         //same output showerror (input,input.id+ "is required")
-            showError(input,`${getFieldId(input) } is required`)
+            showError(input,`${getFieldId(input)} is required`)
         }
         else{
             showSuccess(input);
@@ -48,14 +48,33 @@ function getFieldId(input){
     return input.id.charAt(0).toUpperCase()+ input.id.slice(1);
 
 }
+//Function to check length 
+function checkLength(input,min,max){
+    if (input.value.length < min){
+        showError(input,`${getFieldId(input)} required min ${min} characters`);
+    }else if (input.value.length > max){
+        showError(input,`${getFieldId(input)} required max ${max} characters`);
+    }else{
+        showSuccess(input);
+    }
 
-//Event listners
+}
+//confirm password funtion to check both passwords input are same
+function checkPasswordMatch(input1,input2){
+    if (input1.value !== input2.value){
+        showError(input2,"passwords do not match")
+    }
+}
+//Event listners  
 // active submit button
 //create event listner
 form.addEventListener("submit", function(e) {
     //prevent page from reloading on submit
     e.preventDefault();
 
-    checkRequired([username,Email,password,con_password]);
+    checkRequired([username,Email,password,con_password])
+    checkLength(username,3,10)
+    checkLength(password,6,30);
+    checkPasswordMatch(password,con_password)
 
-})
+});
